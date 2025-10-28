@@ -1,16 +1,15 @@
-## Hi there 👋
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCERTkaGT0McKq_ryQv1Zak1lIFGkzR7EM",
+  authDomain: "thekrepeqho.firebaseapp.com",
+  databaseURL: "https://thekrepeqho-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "thekrepeqho",
+  storageBucket: "thekrepeqho.firebasestorage.app",
+  messagingSenderId: "300627856463",
+  appId: "1:300627856463:web:cef2c8daf14158fd9b2e3a",
+  measurementId: "G-M9QPK32GPH"
+};
 
-<!--
-**kerepek-kedai-saya/kerepek-kedai-saya** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
