@@ -1,15 +1,51 @@
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyCERTkaGT0McKq_ryQv1Zak1lIFGkzR7EM",
-  authDomain: "thekrepeqho.firebaseapp.com",
-  databaseURL: "https://thekrepeqho-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "thekrepeqho",
-  storageBucket: "thekrepeqho.firebasestorage.app",
-  messagingSenderId: "300627856463",
-  appId: "1:300627856463:web:cef2c8daf14158fd9b2e3a",
-  measurementId: "G-M9QPK32GPH"
-};
+// Function untuk buat tempahan
+document.getElementById('formPesanan').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    alert('✅ Form submitted! Testing connection...');
+    
+    // Dapatkan nilai dari form
+    const nama = document.getElementById('namaPelanggan').value;
+    const telepon = document.getElementById('telepon').value;
+    const alamat = document.getElementById('alamat').value;
+    const jenis = document.getElementById('jenisKerepek').value;
+    const kuantiti = document.getElementById('kuantiti').value;
+    const nota = document.getElementById('nota').value;
+    
+    // Kira harga
+    const hargaList = {
+        'pisang_pedas': 8,
+        'ubi_manis': 7, 
+        'sukun': 6
+    };
+    const harga = hargaList[jenis] || 0;
+    const total = harga * kuantiti;
+    
+    // Buat data pesanan
+    const pesananData = {
+        nama: nama,
+        telepon: telepon,
+        alamat: alamat,
+        jenis: jenis,
+        kuantiti: parseInt(kuantiti),
+        harga: harga,
+        total: total,
+        status: "dalam_proses",
+        tarikh: new Date().toISOString(),
+        nota: nota
+    };
+    
+    alert('Data ready: ' + JSON.stringify(pesananData));
+    
+    // Hantar ke Firebase
+    database.ref('pesanan').push(pesananData)
+        .then(() => {
+            alert('✅ Tempahan BERJAYA! Data saved to Firebase!');
+            document.getElementById('formPesanan').reset();
+        })
+        .catch((error) => {
+            alert('❌ Error: ' + error.message);
+        });
+});
 
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
+console.log("Sistem kerepek loaded!");
